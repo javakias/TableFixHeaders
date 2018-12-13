@@ -1,3 +1,11 @@
+
+# A useful library
+
+* Fixed both direction movement within table.
+* Add two fixed header (trick)
+* Fixed replication bug
+
+
 # TableFixHeaders
 
 [DISCONTINUED] This project it's not deprecated, it do what it must, but we
