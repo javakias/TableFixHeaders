@@ -1,13 +1,13 @@
 
-# A useful library
+# A useful library -TableFixHeaders
 
-* Fixed both direction movement within table.
+* Restrict both direction movement within table simultanteously.
 * Add two fixed header (trick)
 * Fixed replication bug
 
 
-# TableFixHeaders
 
+#=========================================================================
 [DISCONTINUED] This project it's not deprecated, it do what it must, but we
 don't have time to improve it or, even, answer issues.
 
