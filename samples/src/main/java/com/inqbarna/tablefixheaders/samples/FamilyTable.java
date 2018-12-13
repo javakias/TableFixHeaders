@@ -1,17 +1,17 @@
 package com.inqbarna.tablefixheaders.samples;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.inqbarna.tablefixheaders.TableFixHeaders;
-import com.inqbarna.tablefixheaders.adapters.BaseTableAdapter;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.inqbarna.tablefixheaders.TableFixHeaders;
+import com.inqbarna.tablefixheaders.adapters.BaseTableAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FamilyTable extends Activity {
 
@@ -61,6 +61,7 @@ public class FamilyTable extends Activity {
 	public class FamilyNexusAdapter extends BaseTableAdapter {
 
 		private final NexusTypes familys[];
+		private String[] headers1;
 		private final String headers[] = {
 				"Name",
 				"Company",
@@ -83,6 +84,8 @@ public class FamilyTable extends Activity {
 		private final float density;
 
 		public FamilyNexusAdapter(Context context) {
+			headers1 = headers;
+			headers1 = headers;
 			familys = new NexusTypes[] {
 					new NexusTypes("Mobiles"),
 					new NexusTypes("Tablets"),
@@ -143,7 +146,8 @@ public class FamilyTable extends Activity {
 			if (convertView == null) {
 				convertView = getLayoutInflater().inflate(R.layout.item_table_header_first, parent, false);
 			}
-			((TextView) convertView.findViewById(android.R.id.text1)).setText(headers[0]);
+			((TextView) convertView.findViewById(R.id.text1)).setText(headers[0]);
+			((TextView) convertView.findViewById(R.id.text2)).setText(headers1[0]);
 			return convertView;
 		}
 
@@ -151,23 +155,23 @@ public class FamilyTable extends Activity {
 			if (convertView == null) {
 				convertView = getLayoutInflater().inflate(R.layout.item_table_header, parent, false);
 			}
-			((TextView) convertView.findViewById(android.R.id.text1)).setText(headers[column + 1]);
+			((TextView) convertView.findViewById(R.id.text1)).setText(headers[column + 1]);
+			((TextView) convertView.findViewById(R.id.text2)).setText(headers[column + 1]);
 			return convertView;
 		}
 
 		private View getFirstBody(int row, int column, View convertView, ViewGroup parent) {
-			if (convertView == null) {
-				convertView = getLayoutInflater().inflate(R.layout.item_table_first, parent, false);
-			}
+
+			convertView = getLayoutInflater().inflate(R.layout.item_table_first, parent, false);
+
 			convertView.setBackgroundResource(row % 2 == 0 ? R.drawable.bg_table_color1 : R.drawable.bg_table_color2);
 			((TextView) convertView.findViewById(android.R.id.text1)).setText(getDevice(row).data[column + 1]);
 			return convertView;
 		}
 
 		private View getBody(int row, int column, View convertView, ViewGroup parent) {
-			if (convertView == null) {
-				convertView = getLayoutInflater().inflate(R.layout.item_table, parent, false);
-			}
+			convertView = getLayoutInflater().inflate(R.layout.item_table, parent, false);
+
 			convertView.setBackgroundResource(row % 2 == 0 ? R.drawable.bg_table_color1 : R.drawable.bg_table_color2);
 			((TextView) convertView.findViewById(android.R.id.text1)).setText(getDevice(row).data[column + 1]);
 			return convertView;
@@ -196,7 +200,7 @@ public class FamilyTable extends Activity {
 		public int getHeight(int row) {
 			final int height;
 			if (row == -1) {
-				height = 35;
+				height = 60;
 			} else if (isFamily(row)) {
 				height = 25;
 			} else {
